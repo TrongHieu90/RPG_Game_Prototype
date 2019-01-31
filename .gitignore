@@ -4,3 +4,4 @@
 */Temp/**
 *.csproj
 *.sln
+/DiabloUnity/.vs/DiabloUnity/v15/Server/*
