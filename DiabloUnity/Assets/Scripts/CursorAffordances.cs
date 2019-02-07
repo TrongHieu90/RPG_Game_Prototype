@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CameraRaycaster))]
 public class CursorAffordances : MonoBehaviour
 {
     [SerializeField] Texture2D walkCursor = null;
@@ -13,9 +14,10 @@ public class CursorAffordances : MonoBehaviour
     void Start()
     {
         cameraRaycaster = GetComponent<CameraRaycaster>();
+        cameraRaycaster.layerChangeObservers += OnDelegateCalled;
     }
 
-    private void Update()
+    private void OnDelegateCalled()
     {
         switch(cameraRaycaster.layerHit)
         {
