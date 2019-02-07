@@ -7,7 +7,7 @@ public class CursorAffordances : MonoBehaviour
     [SerializeField] Texture2D walkCursor = null;
     [SerializeField] Texture2D targetCursor = null;
     [SerializeField] Texture2D unknownCursor = null;
-    [SerializeField] Vector2 cursorHotspot = Vector2.zero;
+    [SerializeField] Vector2 cursorHotspot = new Vector2 (0, 0);
     CameraRaycaster cameraRaycaster;
 
     void Start()
@@ -35,6 +35,5 @@ public class CursorAffordances : MonoBehaviour
                 Debug.LogError("Dont know what cursor to show");
                 return;
         }
-        Cursor.SetCursor(walkCursor, cursorHotspot, CursorMode.Auto);
     }
 }
