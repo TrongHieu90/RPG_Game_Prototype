@@ -2,7 +2,7 @@
 
 public class CameraRaycaster : MonoBehaviour
 {
-    public Layer[] layerPriorities = {
+    private Layer[] layerPriorities = {
         Layer.Enemy,
         Layer.Walkable
     };
@@ -44,16 +44,24 @@ public class CameraRaycaster : MonoBehaviour
                 if(m_layerHit != layer)
                 {
                     m_layerHit = layer;
-                    layerChangeObservers(layer);
+
+                    layerChangeObservers?.Invoke(layer); //call all the delegates if not null
+
                 }
-                
                 return;
             }
+
+            
         }
 
         // Otherwise return background hit
         m_hit.distance = distanceToBackground;
-        m_layerHit = Layer.RaycastEndStop;
+        if (Layer.RaycastEndStop != m_layerHit)
+        {
+            m_layerHit = Layer.RaycastEndStop;
+
+            layerChangeObservers?.Invoke(layerHit);
+        }
     }
 
     RaycastHit? RaycastForLayer(Layer layer)
