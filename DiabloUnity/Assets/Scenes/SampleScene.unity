@@ -412,7 +412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5da729447200d40942f3ee511f74b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerPriorities: 0a00000009000000
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1483,7 +1482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c065e1c613c584bba25ef5571d30c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkMoveStopRadius: 0.2
+  walkMoveStopRadius: 0.5
+  attackMoveStopRadius: 5
 --- !u!114 &1800009812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,7 +1496,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5da729447200d40942f3ee511f74b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerPriorities: 0a00000009000000
 --- !u!1 &1800010038
 GameObject:
   m_ObjectHideFlags: 0
