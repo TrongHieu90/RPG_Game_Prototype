@@ -21,38 +21,38 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Fixed update is called in sync with physics
-    private void FixedUpdate()
-    {
-        ProcessMouseMovement();
-    }
+    //private void FixedUpdate()
+    //{
+    //    ProcessMouseMovement();
+    //}
 
-    private void ProcessMouseMovement()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            //print("Cursor raycast hit" + cameraRaycaster.hit.collider.gameObject.name.ToString());
+    //private void ProcessMouseMovement()
+    //{
+    //    if (Input.GetMouseButton(0))
+    //    {
+    //        //print("Cursor raycast hit" + cameraRaycaster.hit.collider.gameObject.name.ToString());
 
-            clickPoint = cameraRaycaster.hit.point;
+    //        clickPoint = cameraRaycaster.hit.point;
 
-            switch (cameraRaycaster.layerHit)
-            {
-                case Layer.Walkable:                   
-                    currentDestination = ShortenDestination(clickPoint, walkMoveStopRadius);
+    //        switch (cameraRaycaster.layerHit)
+    //        {
+    //            case Layer.Walkable:                   
+    //                currentDestination = ShortenDestination(clickPoint, walkMoveStopRadius);
 
-                    break;
-                case Layer.Enemy:
-                    currentDestination = ShortenDestination(clickPoint, attackMoveStopRadius);
-                    break;
-                default:
-                    print("shouldnt be here");
-                    return;
+    //                break;
+    //            case Layer.Enemy:
+    //                currentDestination = ShortenDestination(clickPoint, attackMoveStopRadius);
+    //                break;
+    //            default:
+    //                print("shouldnt be here");
+    //                return;
 
-            }
+    //        }
 
-        }
-        WalkToDestination();
+    //    }
+    //    WalkToDestination();
         
-    }
+    //}
 
     private Vector3 ShortenDestination(Vector3 destination, float shortening)
     {

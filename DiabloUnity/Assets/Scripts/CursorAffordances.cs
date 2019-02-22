@@ -10,31 +10,30 @@ public class CursorAffordances : MonoBehaviour
     [SerializeField] Texture2D unknownCursor = null;
     [SerializeField] Vector2 cursorHotspot = new Vector2 (0, 0);
     CameraRaycaster cameraRaycaster;
+    [SerializeField] const int walkableLayerNumber = 8;
+    [SerializeField] const int enemyLayerNumber = 9;
+
 
     void Start()
     {
         cameraRaycaster = GetComponent<CameraRaycaster>();
-        cameraRaycaster.layerChangeObservers += OnDelegateCalled;
+        cameraRaycaster.notifyLayerChangeObservers += OnDelegateCalled;
     }
 
-    private void OnDelegateCalled(Layer layer)
+    private void OnDelegateCalled(int layer)
     {
         switch(layer)
         {
-            case Layer.Walkable:
+            case walkableLayerNumber:
                 Cursor.SetCursor(walkCursor, cursorHotspot, CursorMode.Auto);
                 break;
 
-            case Layer.Enemy:
+            case enemyLayerNumber:
                 Cursor.SetCursor(targetCursor, cursorHotspot, CursorMode.Auto);
                 break;
 
-            case Layer.RaycastEndStop:
-                Cursor.SetCursor(unknownCursor, cursorHotspot, CursorMode.Auto);
-                break;
-
             default:
-                Debug.LogError("Dont know what cursor to show");
+                Cursor.SetCursor(unknownCursor, cursorHotspot, CursorMode.Auto);
                 return;
         }
     }
